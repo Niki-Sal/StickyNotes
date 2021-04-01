@@ -1,35 +1,57 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Flash notes</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
-  </head>
-  <body>
-    <ul class="right">
-      <!-- changes below -->
-      <li><a href="{% url 'about' %}">About</a></li>
-      {% if user.is_authenticated %}
-       
-        <li><a href="{% url 'books_create' %}">Add a Book</a></li>
-        <li><a href="{% url 'books' %}">View All My Books</a></li>
-        <li><a href="{% url 'logout' %}">Log Out</a></li>
-      {% else %}
-       
-        <li><a href="{% url 'login' %}">Log In</a></li>
-      {% endif %}
-    </ul>
-     <a href="/books">
-         <h1>Flashnotes</h1>
-     </a>
-    <hr />
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cat Collector</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+   <script defer src="{% static 'app.js' %}"></script> 
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+  <header class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">  
+        <ul>
+          <li><a href="/books/" class="left brand-logo ">&nbsp;&nbsp;Flashnotes</a></li>
+        </ul>
+        <a href='#' class='right sidenav-trigger' data-target="mobile-demo"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{% url 'about' %}">About</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'books_create' %}">Add a Book</a></li>
+            <li><a href="{% url 'books' %}">View All My Books</a></li>
+            <li><a href="{% url 'logout' %}"> Log out</a></li>
+          {% else %}
+            <li><a href="{% url 'login' %}">Log in</a></li>
+            <li><a href="{% url 'sign_up' %}">Sign up</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </header> 
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="{% url 'about' %}">About</a></li>
+    {% if user.is_authenticated %}
+      <li><a href="{% url 'books_create' %}">Add a Book</a></li>
+      <li><a href="{% url 'books' %}">View All My Books</a></li>
+      <li><a href="{% url 'logout' %}"> Log out</a></li>
+    {% else %}
+      <li><a href="{% url 'login' %}">Log in</a></li>
+      <li><a href="{% url 'sign_up' %}">Sign up</a></li>
+    {% endif %}
+  </ul>
+  <main class="container">
+    {% block content %}
+    {% endblock %}
+  </main>
+  <footer class="page-footer">
+    <div class="right">All Rights Reserved, &copy; 2021  &nbsp;</div>
+  </footer>
 
-        {% block content %}
-        {% endblock %}
-
-      <footer>
-        All Rights Reserved 2018
-      </footer>
-  </body>
+</body>
 </html>

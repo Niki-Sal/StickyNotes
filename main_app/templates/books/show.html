@@ -1,29 +1,38 @@
-
 {% extends 'base.html' %}
 
 {% block content %}
-    <title>Flash notes</title>
-    <h2> Name: {{ book.name }}</h1>
-    <p> author: {{ book.author}}</p>
-    <p> Note Type: {{ book.notetype }}</p>
-    <p> image: {{ book.image }}</p>
-    <p> date: {{ book.date}}</p>
+
+    <div>
+        <h1>Cat Details</h1>
+        <h2> Name: {{ book.name }}</h1>
+        <p> author: {{ book.author}}</p>
+        <p> Note Type: {{ book.notetype }}</p>
+        <p> image: {{ book.image }}</p>
+        <p> date: {{ book.date}}</p>
+    </div>
+   
+
+   
+    <div>
+        <form method="post" action="{% url 'add_postit' book.id %}" >
+            {% csrf_token %}
+            {{ postit_form.as_p }}
+            <input type="submit" class="btn" value="Add Note">
+        </form>
+    </div>
+    
+    <div>
+        {% for postit in book.postit_set.all %}
+            <p>{{postit.index}}</p>
+            <p>{{postit.content}}</p> 
+        {% endfor %}
+    </div>
+
+         <!-- Add links for update and delete here... -->
     <a href="{% url 'books_update' book.id %}">UPDATE</a> | 
     <a href="{% url 'books_delete' book.id %}">DELETE</a>
 
-   
-    <!-- new code below -->
-    <form action="{% url 'add_postit' book.id %}" method="post">
-        {% csrf_token %}
-        {{ postit_form.as_p }}
-        <input type="submit" class="btn" value="Add note">
-    </form>
-    <!-- new code above -->
-  
 
-    {% for postit in book.postit_set.all %}
-        <p>{{postit.index}}</p>
-        <p>{{postit.content}}</p>
-          
-    {% endfor %}
+
+    
 {% endblock %}

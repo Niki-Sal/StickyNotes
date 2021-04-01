@@ -1,12 +1,17 @@
-
 {% extends 'base.html' %}
 
 {% block content %}
-<a href="/books/create">Add a New Book!</a>
-<hr />
-    {% for book in books %}
-    <p>Name: {{ book.name }}</p>
-    <p>Author: {{ book.author }}</p>
+    <h1>All of the Books</h1>
+    <hr/>
+    <!-- Add link to create a new cat -->
+    <a href="/books/create">Add a New Book!</a>
     <hr />
+    {% for book in books %}
+        <a href="/books/{{book.id}}">
+            <p>Name: {{ book.name }}</p>
+            <p>Author: {{ book.author }}</p>
+            <hr />
+        </a>
     {% endfor %}
+    
 {% endblock %}
