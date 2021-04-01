@@ -10,4 +10,20 @@
     <p> date: {{ book.date}}</p>
     <a href="{% url 'books_update' book.id %}">UPDATE</a> | 
     <a href="{% url 'books_delete' book.id %}">DELETE</a>
+
+   
+    <!-- new code below -->
+    <form action="{% url 'add_postit' book.id %}" method="post">
+        {% csrf_token %}
+        {{ postit_form.as_p }}
+        <input type="submit" class="btn" value="Add note">
+    </form>
+    <!-- new code above -->
+  
+
+    {% for postit in book.postit_set.all %}
+        <p>{{postit.index}}</p>
+        <p>{{postit.content}}</p>
+          
+    {% endfor %}
 {% endblock %}
