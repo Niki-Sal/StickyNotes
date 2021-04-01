@@ -1,0 +1,13 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="form-section">
+        <h1>Add a Book</h1>
+        <form  method="POST" class="artist-form">
+            {% csrf_token %}
+            {{book_form.as_p}}
+            <button class="btn" type="submit">Save</button>
+        </form>
+    </section>
+{% endblock %}

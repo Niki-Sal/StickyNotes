@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
   </head>
   <body>
+    <ul class="right">
+      <!-- changes below -->
+      <li><a href="{% url 'about' %}">About</a></li>
+      {% if user.is_authenticated %}
+       
+        <li><a href="{% url 'books_create' %}">Add a Book</a></li>
+        <li><a href="{% url 'books' %}">View All My Books</a></li>
+        <li><a href="{% url 'logout' %}">Log Out</a></li>
+      {% else %}
+       
+        <li><a href="{% url 'login' %}">Log In</a></li>
+      {% endif %}
+    </ul>
      <a href="/books">
          <h1>Flashnotes</h1>
      </a>
