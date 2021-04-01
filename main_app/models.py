@@ -10,3 +10,12 @@ class Book(models.Model):
 
     def __str__(self):
         return self.name
+
+class Postit(models.Model):
+    index = models.IntegerField()
+    content = models.CharField(max_length=500)
+    # create a book_id FK
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.content

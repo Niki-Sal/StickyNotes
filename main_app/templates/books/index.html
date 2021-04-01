@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Flashnotes</title>
-  </head>
-  <body>
-    <h1>HIIIIII</h1>
-    <hr />
-    <p>take notes!</p>
+
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="/books/create">Add a New Book!</a>
+<hr />
     {% for book in books %}
-        <p>Name: {{ book.name }}</p>
-        <p>Author: {{ book.author }}</p>
+    <p>Name: {{ book.name }}</p>
+    <p>Author: {{ book.author }}</p>
     <hr />
     {% endfor %}
-    <footer>All Rights Reserved 2021</footer>
-  </body>
-</html>
+{% endblock %}

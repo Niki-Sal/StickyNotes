@@ -1,16 +1,5 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Flashnotes</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
-  </head>
-  <body>
-    <h1>HIIIIII</h1>
-    <hr />
-    <p>take notes!</p>
-  
-    <footer>All Rights Reserved 2021</footer>
-  </body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Welcome to Flashnotes</h1>
+{% endblock %}
