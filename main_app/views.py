@@ -48,6 +48,7 @@ class PostitDelete(DeleteView):
     def form_valid(self, form):
       self.object = form.save(commit=False)
       self.object.save()
+      print(self.object)
     success_url = '/books'
     
 ###########################
