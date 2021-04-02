@@ -31,9 +31,20 @@
                     {% if book.notetype == "FlashCard" %}
                         <div class="scrollmenu">
                         {% for postit in book.postit_set.all %}
-                            <div class= "flashcard-note">
-                                {{postit.index}} | {{postit.content}}
-                            </div> 
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <div class= "flashcard-note">
+                                        {{postit.index}} | {{postit.content}}
+                                    </div> 
+                                </div>
+                                <div class="flip-card-back">
+                                    <div class= "flashcard-note">
+                                        <p>answer</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
                 
                         {% endfor %}
                         </div>
