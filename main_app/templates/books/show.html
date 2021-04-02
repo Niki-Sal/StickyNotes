@@ -1,36 +1,74 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="book-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="book-image" src="{{ book.image }}" alt="book-img">
+                </div>
+                <div class="col-md-5">
+                    <div class="book-info">
+                    
+                        <h4>Book Information</h4>
+                        <hr/>
+                        <p> Title | {{ book.name }}</p>
+                        <p> Author | {{ book.author}}</p>
+                        <p> Date started | {{ book.date}}</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    {% if book.notetype == "PostItNote" %}
+                        <div class="scrollmenu">
+                        {% for postit in book.postit_set.all %} 
+                            <div class= "postit-note">
+                                {{postit.index}} | {{postit.content}}
+                            </div> 
+                        {% endfor %}
+                        </div>
+                    {% endif %}
 
-    <div>
-        <h1>Cat Details</h1>
-        <h2> Name: {{ book.name }}</h1>
-        <p> author: {{ book.author}}</p>
-        <p> Note Type: {{ book.notetype }}</p>
-        <p> image: {{ book.image }}</p>
-        <p> date: {{ book.date}}</p>
-    </div>
-   
+                    {% if book.notetype == "FlashCard" %}
+                        <div class="scrollmenu">
+                        {% for postit in book.postit_set.all %}
+                            <div class= "flashcard-note">
+                                {{postit.index}} | {{postit.content}}
+                            </div> 
+                
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="lead join-button">
+                        <a class="btn btn-outline-dark btn-lg" href="{% url 'books_update' book.id %}">UPDATE</a> 
+                        <a class="btn btn-outline-dark btn-lg" href="{% url 'books_delete' book.id %}">DELETE</a>
+                    </div>
+                     
+                </div>
+                <div class="col-md-8">
+                    <form method="post" action="{% url 'add_postit' book.id %}" >
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                {% csrf_token %}
+                                <div class="form-control">
+                                    {{ postit_form.as_p }}
+                                    <input type="submit" value="Add Note">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
 
-   
-    <div>
-        <form method="post" action="{% url 'add_postit' book.id %}" >
-            {% csrf_token %}
-            {{ postit_form.as_p }}
-            <input type="submit" class="btn" value="Add Note">
-        </form>
-    </div>
-    
-    <div>
-        {% for postit in book.postit_set.all %}
-            <p>{{postit.index}}</p>
-            <p>{{postit.content}}</p> 
-        {% endfor %}
-    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
 
-         <!-- Add links for update and delete here... -->
-    <a href="{% url 'books_update' book.id %}">UPDATE</a> | 
-    <a href="{% url 'books_delete' book.id %}">DELETE</a>
+    </div>
 
 
 

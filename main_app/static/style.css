@@ -1,5 +1,18 @@
-h1 {
-    color: turquoise;
+*{
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: rgba(65, 31, 165)!important;
+}
+
+.title-1 {
+    color: white;
+    margin-top: 20px;
+}
+.title-2 {
+    color: rgba(65, 31, 165);
+    margin-top: 20px;
 }
 
 a {
@@ -27,3 +40,116 @@ body {
 main {
   flex: 1 0 auto;
 }
+/* homepage */
+/* navbar */
+
+.mycolor {
+  background-color: rgba(192, 5, 174) !important;
+}
+
+.link-color{
+  color: white !important;
+}
+
+.title-prop{
+  color: white !important;
+  font-size: 30px !important;
+  padding-left: 50px !important;
+}
+
+.link-color:hover{
+  text-decoration: none;
+  color: rgba(65, 31, 165);
+}
+/* footer */
+.page-footer{
+  background-color: rgba(192, 5, 174);
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+/* welcome */
+.welcome{
+  margin-top: 100px;
+}
+.welcome-note{ 
+  color: white !important;
+}
+.join-button{
+  margin-top: 50px !important;
+}
+
+/* about */
+.note-container{
+  color: white;
+  margin: 20px;
+  border: 2px solid white;
+  border-radius: 30px;
+  padding: 20px;
+}
+
+/* profile */
+.library-container{
+  background-color: white;
+  border: 1px solid white;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+
+}
+
+.collection-container{
+  background-color: gray;
+  height: 200px;
+  width: 150px;
+  margin: 20px;
+  padding: 10px;
+}
+
+/* book details */
+.book-container{
+  background-color: white;
+  border: 2px solid white;
+  margin: 20px;
+}
+
+.book-image{
+  height: 350px;
+  width: 220px;
+  margin: 30px;
+}
+.book-info{
+  border: 1px rgb(212, 210, 210) solid;
+  border-radius: 10px;
+  padding: 40px;
+  margin: 30px;
+  height: 350px;
+}
+
+div.postit-note{
+  background-color: rgb(243, 243, 141);
+  height: 200px;
+  width: 200px;
+  word-wrap: break-word;
+  margin: 20px;
+  padding: 10px;
+}
+.flashcard-note{
+  background-color: rgb(218, 218, 218);
+  height: 200px;
+  width: 300px;
+  word-wrap: break-word;
+  padding: 20px;
+  margin: 10px;
+}
+
+div.scrollmenu {
+  height: 350px;
+  width: 280px;
+  overflow-y: scroll;
+  margin-bottom: 50px;
+  margin-top: 30px;
+  border: 1px rgb(212, 210, 210) solid;
+  border-radius: 10px;
+}
+

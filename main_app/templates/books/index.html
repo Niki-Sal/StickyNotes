@@ -1,17 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>All of the Books</h1>
-    <hr/>
-    <!-- Add link to create a new cat -->
-    <a href="/books/create">Add a New Book!</a>
-    <hr />
-    {% for book in books %}
-        <a href="/books/{{book.id}}">
-            <p>Name: {{ book.name }}</p>
-            <p>Author: {{ book.author }}</p>
-            <hr />
-        </a>
-    {% endfor %}
+    <h3 class="title-1">My Library</h3>
+
+    <p class="lead join-button">
+        <a class="btn btn-outline-light btn-lg" href="/books/create" role="button">Add Post It Notes Collection </a>
+        <a class="btn btn-outline-light btn-lg" href="/books/create" role="button">Add Flash Cards Collection </a>
+    </p>
+    
+    <h4 class="title-1">Post It Notes Collections</h4>
+    <div class="library-container">
+        {% for book in books %}
+            {% if book.notetype == "PostItNote" %}
+                <div class="collection-container">
+                    <a href="/books/{{book.id}}">
+                        <p>{{ book.name }}</p>
+                    </a>
+                    <p>By: {{ book.author }}</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <h4 class="title-1">Flash Cards Collections</h4>
+    <div class="library-container">
+        {% for book in books %}
+            {% if book.notetype == "FlashCard" %}
+                <div class="collection-container">
+                    <a href="/books/{{book.id}}">
+                        <p>{{ book.name }}</p>
+                    </a>
+                    <p>By: {{ book.author }}</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
     
 {% endblock %}

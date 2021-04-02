@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Welcome to Flashnotes</h1>
+<div class="jumbotron jumbotron-fluid welcome">
+    <h3 class = "welcome-note">Welcome to Flashnotes</h3>
+    <h1 class = "welcome-note">Take notes. They cost memories...</h1>
+
+    {% if user.is_authenticated %}
+        <p>all books to be shown</p>
+    {% else %}
+    <p class="lead join-button">
+        <a class="btn btn-outline-light btn-lg" href="{% url 'sign_up' %}" role="button">JOIN FLASHNOTES</a>
+    </p>
+    {% endif %}
+</div>
 {% endblock %}
