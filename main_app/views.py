@@ -5,7 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .models import Book
-from .forms import PostitForm, BookForm
+from .forms import PostitForm, BookForm, FlashcardForm
 
 
 # class BookCreate(CreateView):
@@ -29,7 +29,8 @@ class BookDelete(DeleteView):
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    allbooks = Book.objects.all()
+    return render(request, 'index.html',{'allbooks': allbooks })
 
 def about(request):
     return render(request, 'about.html')
@@ -50,8 +51,11 @@ def books_index(request):
 def books_show(request, book_id):
     book = Book.objects.get(id=book_id)
     postit_form = PostitForm()
+    flashcard_form = FlashcardForm()
     return render(request, 'books/show.html', {
-        'book': book, 'postit_form':postit_form
+        'book': book, 
+        'postit_form':postit_form,
+        'flashcard_form':flashcard_form
     })
 
 @login_required
@@ -75,6 +79,16 @@ def add_postit(request, book_id):
         new_postit = form.save(commit=False)
         new_postit.book_id = book_id
         new_postit.save()
+    return redirect('books_show', book_id=book_id)
+
+@login_required
+def add_flashcard(request, book_id):
+    form = FlashcardForm(request.POST)
+
+    if form.is_valid():
+        new_flashcard = form.save(commit=False)
+        new_flashcard.book_id = book_id
+        new_flashcard.save()
     return redirect('books_show', book_id=book_id)
 
 def sign_up(request):

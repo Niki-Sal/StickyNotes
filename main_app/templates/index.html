@@ -6,7 +6,35 @@
     <h1 class = "welcome-note">Take notes. They cost memories...</h1>
 
     {% if user.is_authenticated %}
-        <p>all books to be shown</p>
+        <h4 class="title-1">All Post It Notes Collections</h4>
+        <div class="library-container">
+            {% for book in allbooks %}
+                {% if book.notetype == "PostItNote" %}
+                    <div class="collection-container">
+                        <a href="/books/{{book.id}}">
+                            <p>{{ book.name }}</p>
+                        </a>
+                        <p>Author: {{ book.author }}</p>
+                        <p>By: {{ book.user }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <h4 class="title-1">All Flash Cards Collections</h4>
+        <div class="library-container">
+            {% for book in allbooks %}
+                {% if book.notetype == "FlashCard" %}
+                    <div class="collection-container">
+                        <a href="/books/{{book.id}}">
+                            <p>{{ book.name }}</p>
+                        </a>
+                        <p>Author: {{ book.author }}</p>
+                        <p>By: {{ book.user }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
     {% else %}
     <p class="lead join-button">
         <a class="btn btn-outline-light btn-lg" href="{% url 'sign_up' %}" role="button">JOIN FLASHNOTES</a>

@@ -20,7 +20,8 @@
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link link-color" href="{% url 'about' %}">About</a></li>
           {% if user.is_authenticated %}
-            <li class="nav-item"><a class="nav-link link-color" href="{% url 'books' %}">My profile </a></li>
+            <li class="nav-item"><a class="nav-link link-color">Hi {{ user.username }}!</a> </li>
+            <li class="nav-item"><a class="nav-link link-color" href="{% url 'books' %}"> Profile </a></li>
             <li class="nav-item"><a class="nav-link link-color" href="{% url 'logout' %}"> Log out</a></li>
           {% else %}
             <li class="nav-item"><a class="nav-link link-color" href="{% url 'login' %}">Log in</a></li>

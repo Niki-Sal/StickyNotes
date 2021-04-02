@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="lead join-button">
+        <a class="btn btn-outline-light btn-lg" href="{% url 'books' %}">LIBRARY</a>
+    </div> 
     <div class="book-container">
         <div class="container">
             <div class="row">
@@ -30,17 +33,17 @@
 
                     {% if book.notetype == "FlashCard" %}
                         <div class="scrollmenu">
-                        {% for postit in book.postit_set.all %}
+                        {% for postit in book.flashcard_set.all %}
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                 <div class="flip-card-front">
                                     <div class= "flashcard-note">
-                                        {{postit.index}} | {{postit.content}}
+                                        {{flashcard.number}} | {{flashcard.question}}
                                     </div> 
                                 </div>
                                 <div class="flip-card-back">
                                     <div class= "flashcard-note">
-                                        <p>answer</p>
+                                        <p>{{flashcard.answer}}</p>
                                     </div>
                                 </div>
                                 </div>
@@ -51,35 +54,55 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="lead join-button">
-                        <a class="btn btn-outline-dark btn-lg" href="{% url 'books_update' book.id %}">UPDATE</a> 
-                        <a class="btn btn-outline-dark btn-lg" href="{% url 'books_delete' book.id %}">DELETE</a>
+
+            {% if user == book.user %}
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="lead join-button">
+                            <a class="btn btn-outline-dark btn-lg" href="{% url 'books_update' book.id %}">UPDATE</a> 
+                            <a class="btn btn-outline-dark btn-lg" href="{% url 'books_delete' book.id %}">DELETE</a>
+                        </div>
+                        
                     </div>
-                     
-                </div>
-                <div class="col-md-8">
-                    <form method="post" action="{% url 'add_postit' book.id %}" >
-                        <div class="form-row">
-                            <div class="col-md-12">
-                                {% csrf_token %}
-                                <div class="form-control">
-                                    {{ postit_form.as_p }}
-                                    <input type="submit" value="Add Note">
+                    {% if book.notetype == "PostItNote" %}
+                        <div class="col-md-8">
+                            <form method="post" action="{% url 'add_postit' book.id %}" >
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        {% csrf_token %}
+                                        <div class="form-control">
+                                            {{ postit_form.as_p }}
+                                            <input type="submit" value="Add Note">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    {% endif %}
+
+                    {% if book.notetype == "FlashCard" %}
+                    <div class="col-md-8">
+                        <form method="post" action="{% url 'add_postit' book.id %}" >
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    {% csrf_token %}
+                                    <div class="form-control">
+                                        {{ flashcard_form.as_p }}
+                                        <input type="submit" value="Add Note">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
-
+                        </form>
+                    </div>
+                    {% endif %}
                 </div>
-            </div>
+            {% endif %}
+            
         </div>
-        
-        
-        
-
+ 
     </div>
+   
+            
 
 
 

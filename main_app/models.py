@@ -28,3 +28,15 @@ class Postit(models.Model):
 
     class Meta:
         ordering = ['-index']
+
+
+class Flashcard(models.Model):
+    number = models.IntegerField()
+    question = models.CharField(max_length=600)
+    answer = models.CharField(max_length=600)
+    # create a book_id FK
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.question
+    
