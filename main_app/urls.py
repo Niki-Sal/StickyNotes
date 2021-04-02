@@ -13,5 +13,6 @@ urlpatterns = [
     path('postit/<int:pk>/delete-postit/', views.PostitDelete.as_view(), name='postit_delete'),
     path('books/<int:book_id>/add_postit/', views.add_postit, name='add_postit'),
     path('books/<int:book_id>/add_flashcard/', views.add_flashcard, name='add_flashcard'),
+    path('books/<int:book_id>/add_photo/', views.add_photo, name='add_photo'),
     path('accounts/signup', views.sign_up, name='sign_up')
 ]

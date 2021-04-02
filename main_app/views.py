@@ -4,8 +4,13 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from .models import Book, Postit
+from .models import Book, Postit, Photo
 from .forms import PostitForm, BookForm, FlashcardForm
+import uuid
+import boto3
+
+S3_BASE_URL = 'https://s3-us-west-2.amazonaws.com/'
+BUCKET = 'flashnotes'
 
 
 # class BookCreate(CreateView):
@@ -127,3 +132,22 @@ def sign_up(request):
     'form': form, 
     'error_message': error_message
   })
+
+def add_photo(request, book_id):
+    # photo-file will be the "name" attribute on the <input type="file">
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        # need a unique "key" for S3 / needs image file extension too
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        # just in case something goes wrong
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            # build the full url string
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            # we can assign to cat_id or cat (if you have a book object)
+            photo = Photo(url=url, book_id=book_id)
+            photo.save()
+        except:
+            print('An error occurred uploading file to S3')
+    return redirect('books_show', book_id=book_id)

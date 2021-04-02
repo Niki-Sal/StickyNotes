@@ -10,7 +10,7 @@ class PostitForm(forms.ModelForm):
 class BookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ('name', 'author', 'notetype', 'image')
+        fields = ('name', 'author', 'notetype')
 
 class FlashcardForm(forms.ModelForm):
     class Meta:
