@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from .models import Book
+from .models import Book, Postit
 from .forms import PostitForm, BookForm, FlashcardForm
 
 
@@ -26,6 +26,26 @@ class BookDelete(DeleteView):
     model = Book
     success_url = '/books'
 
+############################
+class PostitUpdate(UpdateView):
+  model = Postit
+  fields = ['index', 'content']
+
+  def form_valid(self, form):
+    self.object = form.save(commit=False)
+    self.object.save()
+   
+    return HttpResponseRedirect('/books/'+ str(self.object.book.pk))
+
+class PostitDelete(DeleteView):
+    model = Postit
+    
+    def form_valid(self, form):
+      self.object = form.save(commit=False)
+      self.object.save()
+    success_url = '/books'
+    
+###########################
 
 # Create your views here.
 def index(request):
