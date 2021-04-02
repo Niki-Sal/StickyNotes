@@ -33,7 +33,7 @@
 
                     {% if book.notetype == "FlashCard" %}
                         <div class="scrollmenu">
-                        {% for postit in book.flashcard_set.all %}
+                        {% for flashcard in book.flashcard_set.all %}
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                 <div class="flip-card-front">
@@ -82,7 +82,7 @@
 
                     {% if book.notetype == "FlashCard" %}
                     <div class="col-md-8">
-                        <form method="post" action="{% url 'add_postit' book.id %}" >
+                        <form method="post" action="{% url 'add_flashcard' book.id %}" >
                             <div class="form-row">
                                 <div class="col-md-12">
                                     {% csrf_token %}
