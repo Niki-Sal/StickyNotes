@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import login
@@ -52,7 +52,16 @@ class PostitDelete(DeleteView):
     success_url = '/books'
     
 ###########################
+# def delete_postit(request, book_id):
+#   form = PostitForm(request.POST)
 
+#   if form.is_valid():
+#       obj = form.delete(commit=False)
+#       obj.book_id = book_id
+#       obj.delete()
+#   return redirect('books_show', book_id=book_id)
+
+###########################
 # Create your views here.
 def index(request):
     allbooks = Book.objects.all()
@@ -92,7 +101,8 @@ def books_new(request):
     new_book = book_form.save(commit=False)
     new_book.user = request.user
     new_book.save()
-    return redirect('index')
+    books = Book.objects.filter(user = request.user)
+    return render(request, 'books/index.html', { 'books': books })
   else:
     return render(request, 'books/new.html', { 'book_form': book_form })
 

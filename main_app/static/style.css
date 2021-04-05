@@ -5,14 +5,32 @@
 body{
   background-color: rgba(65, 31, 165)!important;
 }
+.center{
+  margin-left: 20px;
+ 
+}
 
 .title-1 {
     color: white;
-    margin-top: 20px;
+    margin-top: 100px;
 }
 .title-2 {
     color: rgba(65, 31, 165);
     margin-top: 20px;
+}
+.title-3 {
+  color: white;
+  margin-top: 100px;
+  margin-left: 50px;
+}
+.title-4 {
+  color: white;
+  margin-top: 100px;
+  margin-bottom: 40px;
+  text-align:  center;
+}
+.center{
+  margin: 0px auto;
 }
 
 a {
@@ -74,9 +92,17 @@ main {
 }
 .welcome-note{ 
   color: white !important;
+  margin-left: 20px;
 }
 .join-button{
-  margin-top: 50px !important;
+  /* margin-top: 50px !important; */
+  display: table;
+  margin: 50px auto;
+}
+.other-button{
+  /* margin-top: 50px !important; */
+  display: table;
+  margin: 10px auto;
 }
 
 /* about */
@@ -92,26 +118,52 @@ main {
 .library-container{
   background-color: white;
   border: 1px solid white;
-  display: flex;
-  justify-content: flex-start;
   margin-bottom: 20px;
+  overflow-y: scroll;
+  width: 500px;
+  height: 500px;
+  margin: 20px auto;
 
+}
+@media screen and (max-width: 800px){
+  .library-container{
+    background-color: white;
+    border: 1px solid white;
+    margin-bottom: 20px;
+    overflow-y: scroll;
+    width: 250px;
+    height: 500px;
+    margin: 20px auto;
+  
+  }
 }
 
 .collection-container{
   background-color: rgb(216, 211, 248);
+  color: rgba(65, 31, 165);
+  text-align: center;
   height: 200px;
   width: 150px;
-  margin: 20px;
+  margin: 40px;
   padding: 10px;
   box-shadow: 5px 10px #c0bfbf;
+  display: inline-block;
 }
-
+.collection-container a{
+  text-decoration: none;
+  color: rgba(65, 31, 165);
+  font-weight: bold;
+}
+.collection-container a:hover {
+  text-decoration: none;
+  color: white;
+}
 /* book details */
 .book-container{
   background-color: white;
   border: 2px solid white;
   margin: 20px;
+  padding: 10px;
 }
 
 .book-image{
@@ -123,7 +175,7 @@ main {
   border: 1px rgb(212, 210, 210) solid;
   border-radius: 10px;
   padding: 40px;
-  margin: 30px;
+  margin: 20px auto;
   height: 350px;
 }
 
@@ -132,28 +184,35 @@ div.postit-note{
   height: 200px;
   width: 200px;
   word-wrap: break-word;
-  margin: 20px;
-  padding: 10px;
+  padding: 20px;
+  margin: 20px auto;
 }
 .flashcard-note{
   background-color: rgb(218, 218, 218);
   height: 150px;
-  width: 250px;
+  width: 300px;
   word-wrap: break-word;
   padding: 20px;
-  margin: 10px;
+  margin: 20px auto;
 }
 
 div.scrollmenu {
   height: 350px;
-  width: 300px;
+  width: 100%;
   overflow-y: scroll;
-  margin-bottom: 50px;
-  margin-top: 30px;
+  /* margin-bottom: 50px;
+  margin-top: 30px; */
   border: 1px rgb(212, 210, 210) solid;
   border-radius: 10px;
+  margin: 20px auto;
 }
-
+.photo-container{
+  border: 1px rgb(212, 210, 210) solid;
+  border-radius: 10px;
+  height: 400px;
+  width: 100%;
+  overflow-x: scroll;
+}
 
 /****FLIP CARD*****/
 

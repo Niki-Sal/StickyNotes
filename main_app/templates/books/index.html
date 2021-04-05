@@ -1,39 +1,47 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h3 class="title-1">My Library</h3>
+    <h3 class="title-4">My Library</h3>
 
-    <p class="lead join-button">
+    <p class="lead join-button center">
         <a class="btn btn-outline-light btn-lg" href="/books/create" role="button">Add Post It Notes Collection </a>
         <a class="btn btn-outline-light btn-lg" href="/books/create" role="button">Add Flash Cards Collection </a>
     </p>
-    
-    <h4 class="title-1">Post It Notes Collections</h4>
-    <div class="library-container">
-        {% for book in books %}
-            {% if book.notetype == "PostItNote" %}
-                <div class="collection-container">
-                    <a href="/books/{{book.id}}">
-                        <p>{{ book.name }}</p>
-                    </a>
-                    <p>Author: {{ book.author }}</p>
-                </div>
-            {% endif %}
-        {% endfor %}
+    <div class="row">
+       
+        <div class="col-md-6">            
+            <h4 class="title-4">My Post It Notes Collections</h4>
+            <div class="library-container">
+                {% for book in books %}
+                    {% if book.notetype == "PostItNote" %}
+                        <div class="collection-container">
+                            <a href="/books/{{book.id}}">
+                                <p>{{ book.name }}</p>
+                            </a>
+                            <p>Author: {{ book.author }}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        
+        </div>
+        <div class="col-md-6">            
+            <h4 class="title-4">My Flash Cards Collections</h4>
+            <div class="library-container">
+                {% for book in books %}
+                    {% if book.notetype == "FlashCard" %}
+                        <div class="collection-container">
+                            <a href="/books/{{book.id}}">
+                                <p>{{ book.name }}</p>
+                            </a>
+                            <p>Author: {{ book.author }}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
     </div>
-
-    <h4 class="title-1">Flash Cards Collections</h4>
-    <div class="library-container">
-        {% for book in books %}
-            {% if book.notetype == "FlashCard" %}
-                <div class="collection-container">
-                    <a href="/books/{{book.id}}">
-                        <p>{{ book.name }}</p>
-                    </a>
-                    <p>Author: {{ book.author }}</p>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
+  
+   
     
 {% endblock %}
