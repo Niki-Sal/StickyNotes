@@ -2,12 +2,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <section class="form-section">
-        <h1>Add a Book</h1>
+    <section class="form-container">
+        <h1>New Collection</h1>
+        <hr />
         <form  method="POST" class="artist-form">
             {% csrf_token %}
-            {{book_form.as_p}}
-            <button class="btn" type="submit">Save</button>
+            <li>BOOK TITLE</li>
+            <li>{{ book_form.name }}</li>
+            <li>AUTHOR</li>
+            <li>{{ book_form.author }}</li>
+            <li>NOTE TYPE</li>
+            <li>{{ book_form.notetype }}</li>
+            <div class="other-button ">
+                <button class="btn btn-outline-dark btn-sm"  type="submit">Save</button>
+
+            </div>
         </form>
     </section>
 {% endblock %}

@@ -1,13 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
+<section class="form-container">
+  <h1>Log In</h1>
+  
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+  
+    <li>USERNAME</li>
+    <li>{{ form.username }}</li>
+    <li>PASSWORD</li>
+    <li>{{ form.password }}</li>
+    <div class="other-button ">
+      <input type="submit" class="btn btn-outline-dark btn-sm"  value="login">
 
-<h1>Log In</h1>
-<!-- Add the login form -->
-<form method="post" action="{% url 'login' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" class="btn" value="login">
-  <input type="hidden" name="next" value="{{ next }}">
-</form>
+    </div>
+    <input type="hidden" name="next" value="{{ next }}">
+  </form>
+
+</section>
 
 {% endblock %}
+

@@ -2,12 +2,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <section class="form-row">
+    <section>
         <h1>Add a Book</h1>
-        <form  method="POST" class="artist-form">
+        <form  method="POST" >
             {% csrf_token %}
             {{form.as_p}}
             <button class="btn" type="submit">Save</button>
         </form>
     </section>
 {% endblock %}
+
+

@@ -121,7 +121,7 @@ main {
   margin-bottom: 20px;
   overflow-y: scroll;
   width: 500px;
-  height: 500px;
+  height: 560px;
   margin: 20px auto;
 
 }
@@ -132,7 +132,7 @@ main {
     margin-bottom: 20px;
     overflow-y: scroll;
     width: 250px;
-    height: 500px;
+    height: 560px;
     margin: 20px auto;
   
   }
@@ -162,6 +162,7 @@ main {
 .book-container{
   background-color: white;
   border: 2px solid white;
+  border-radius: 10px;
   margin: 20px;
   padding: 10px;
 }
@@ -187,13 +188,13 @@ div.postit-note{
   padding: 20px;
   margin: 20px auto;
 }
-.flashcard-note{
+div.flashcard-note{
   background-color: rgb(218, 218, 218);
   height: 150px;
-  width: 300px;
+  width: 250px;
   word-wrap: break-word;
   padding: 20px;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 div.scrollmenu {
@@ -218,8 +219,11 @@ div.scrollmenu {
 
 .flip-card {
   background-color: transparent;
+  height: 150px;
   width: 300px;
-  height: 200px;
+  word-wrap: break-word;
+  padding: 20px;
+  margin: 10px auto;
 }
 
 
@@ -256,4 +260,24 @@ div.scrollmenu {
   color: black;
   transform: rotateY(180deg);
 }
-
+.control-container{
+  border: 1px rgb(212, 210, 210) solid;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+/* forms */
+li {
+  list-style-type: none;
+}
+.form-container{
+  background: white;
+  text-align: center;
+  padding: 20px;
+  margin: 20px auto;
+}
+.form-container-2{
+  background: white;
+  padding: 20px;
+  margin: 20px;
+}

@@ -41,18 +41,19 @@
                         {% for flashcard in book.flashcard_set.all %}
                             <div class="flip-card">
                                 <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <div class= "flashcard-note">
-                                        {{flashcard.number}} | {{flashcard.question}}
-                                    </div> 
-                                </div>
-                                <div class="flip-card-back">
-                                    <div class= "flashcard-note">
-                                        <p>{{flashcard.answer}}</p>
+                                    <div class="flip-card-front">
+                                        <div class= "flashcard-note">
+                                            {{flashcard.number}} | {{flashcard.question}}
+                                        </div> 
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <div class= "flashcard-note">
+                                            <p>{{flashcard.answer}}</p>
+                                        </div>
                                     </div>
                                 </div>
-                                </div>
                             </div>
+                         
                 
                         {% endfor %}
                         </div>
@@ -63,29 +64,42 @@
 
             {% if user == book.user %}
                 <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        
-                            <form action="{% url 'add_photo' book.id %}" enctype="multipart/form-data" method="POST">
-                                {% csrf_token %}
-                                <input type="file" name="photo-file">
-                                <input  type="submit"  value="Upload Photo">
-                            </form>
-                            <a class="btn btn-outline-dark btn-sm" href="{% url 'books_update' book.id %}">UPDATE</a> 
-                            <a class="btn btn-outline-dark btn-sm" href="{% url 'books_delete' book.id %}">DELETE</a>
+                   
+                    <div class="col-md-6">
+                        <div class="control-container">
+                            <div class="control-container">
+                                <form action="{% url 'add_photo' book.id %}" enctype="multipart/form-data" method="POST">
+                                    {% csrf_token %}
+                                    <input type="file" name="photo-file">
+                                    <input  type="submit"  value="Upload Photo">
+                                </form>
+                            </div>
+                       
+                            <div class="other-button ">
+                                <a class="btn btn-outline-dark btn-sm" href="{% url 'books_update' book.id %}">UPDATE</a> 
+                                <a class="btn btn-outline-dark btn-sm" href="{% url 'books_delete' book.id %}">DELETE</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-2"></div>
                     {% if book.notetype == "PostItNote" %}
                         <div class="col-md-4">
                             <form method="post" action="{% url 'add_postit' book.id %}" >
                                 
-                                <div class="col-md-12">
+                                <div class="row">
                                     {% csrf_token %}
-                                    <div>
-                                        {{ postit_form.as_p }}
-                                        <li>{{ postit_form.index }}</li>
-                                        <li>{{ postit_form.content }}</li>
-                                        <input type="submit" value="Add Note">
+                                    <div class="col-md-12">
+                                        <div class="control-container" >
+                                            <li>INDEX</li>
+                                            <li>{{ postit_form.index }}</li>
+                                            <li>CONTENT</li>
+                                            <li>{{ postit_form.content }}</li>
+                                            <div class="other-button ">
+                                                <input class="btn btn-outline-dark btn-sm" type="submit" value="Add Note">
+
+                                            </div>
+
+                                        </div>  
                                     </div>
                                 </div>
                                 
@@ -96,15 +110,23 @@
                     {% if book.notetype == "FlashCard" %}
                         <div class="col-md-4">
                             <form method="post" action="{% url 'add_flashcard' book.id %}" >
-                                
-                                <div class="col-md-12">
+                                <div class="row"> 
                                     {% csrf_token %}
-                                    <div>
-                                        {{ flashcard_form.as_p }}
-                                        <input type="submit" value="Add Note">
+                                    <div class="col-md-12">
+                                        <div class="control-container">
+                                            <li>INDEX</li>
+                                            <li>{{ flashcard_form.number }}</li>
+                                            <li>QUESTION</li>
+                                            <li>{{ flashcard_form.question }}</li>
+                                            <li>ANSWER</li>
+                                            <li>{{ flashcard_form.answer }}</li>
+                                            
+                                            <div class="other-button ">
+                                                <input type="submit" value="Add Note">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                             
                             </form>
                         </div>
                     {% endif %}
