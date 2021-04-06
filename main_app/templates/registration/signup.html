@@ -3,15 +3,18 @@
 
 <section class="form-container-2">
   <h1>Sign Up</h1>
- 
+  <hr />
   <form method="post" action="{% url 'sign_up' %}">
       {% csrf_token %}
       {{ form.as_p }}
-    
-      <input type="submit" class="btn" value="login">
+      <div class="other-button ">
+        <input class="btn btn-outline-dark btn-md" type="submit" class="btn" value="login">
+
+      </div>
       <input type="hidden" name="next" value="{{ next }}">
     </form>
 
 </section>
 
 {% endblock %}
+

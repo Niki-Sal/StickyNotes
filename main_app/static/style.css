@@ -9,6 +9,10 @@ body{
   margin-left: 20px;
  
 }
+p{
+  margin: 0px;
+  padding: 0px;
+}
 
 .title-1 {
     color: white;
@@ -118,12 +122,25 @@ main {
 .library-container{
   background-color: white;
   border: 1px solid white;
+  border-radius: 10px;
   margin-bottom: 20px;
   overflow-y: scroll;
   width: 500px;
   height: 560px;
   margin: 20px auto;
 
+}
+.collection-container{
+  background-color: rgb(216, 211, 248);
+  color: rgba(65, 31, 165);
+  font-size: 15px;
+  text-align: center;
+  height: 100px;
+  width: 400px;
+  margin: 40px;
+  padding: 10px;
+  box-shadow: 5px 10px #c0bfbf;
+  /* display: inline-block; */
 }
 @media screen and (max-width: 800px){
   .library-container{
@@ -136,19 +153,21 @@ main {
     margin: 20px auto;
   
   }
+  .collection-container{
+    background-color: rgb(216, 211, 248);
+    color: rgba(65, 31, 165);
+    font-size: 15px;
+    text-align: center;
+    height: 200px;
+    width: 150px;
+    margin: 40px;
+    padding: 10px;
+    box-shadow: 5px 10px #c0bfbf;
+    display: inline-block;
+  }
 }
 
-.collection-container{
-  background-color: rgb(216, 211, 248);
-  color: rgba(65, 31, 165);
-  text-align: center;
-  height: 200px;
-  width: 150px;
-  margin: 40px;
-  padding: 10px;
-  box-shadow: 5px 10px #c0bfbf;
-  display: inline-block;
-}
+
 .collection-container a{
   text-decoration: none;
   color: rgba(65, 31, 165);
@@ -164,13 +183,14 @@ main {
   border: 2px solid white;
   border-radius: 10px;
   margin: 20px;
-  padding: 10px;
+  padding: 60px;
 }
 
 .book-image{
-  height: 350px;
-  width: 220px;
+  height: 250px;
+  width: auto;
   margin: 30px;
+  border: 1px gray solid;
 }
 .book-info{
   border: 1px rgb(212, 210, 210) solid;
@@ -275,9 +295,13 @@ li {
   text-align: center;
   padding: 20px;
   margin: 20px auto;
+  border: 1px solid white;
+  border-radius: 10px;
 }
 .form-container-2{
   background: white;
   padding: 20px;
   margin: 20px;
+  border: 1px solid white;
+  border-radius: 10px;
 }
