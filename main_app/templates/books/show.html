@@ -1,24 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="lead join-button">
+    <!-- <div class="lead join-button">
         <a class="btn btn-outline-light btn-lg" href="{% url 'books' %}">LIBRARY</a>
-    </div> 
+    </div>  -->
     <div class="book-container">
         <div class="container">
             <div class="row">   
-                <div class="col-lg-6">
+                <div class="col-md-12">
                     <div class="book-info">
                     
-                        <h4>Note Collection Info</h4>
-                        <hr/>
-                        <p> Title | {{ book.name }}</p>
-                        <p> Author | {{ book.author}}</p>
-                        <p> Date started | {{ book.date}}</p>
+                        <h3>{{ book.name }}</h3>
+                        <hr>
+                        <p><strong>Author |</strong> {{ book.author}}</p>
+                        <p><strong>Date started | </strong>{{ book.date}}</p>
                     </div>
                 </div>
-                <div class="col-lg-2"></div>
-                <div class="col-lg-4">
+            </div>
+            <div class="row">
+                <div class="col-md-6">
                     {% if book.notetype == "PostItNote" %}
                         <div class="scrollmenu">
                         {% for postit in book.postit_set.all %} 
@@ -59,31 +59,26 @@
                         </div>
                     {% endif %}
                 </div>
+            
+                <div class="col-md-6">
+                    <div class= scrollmenu>
+                        {% for photo in book.photo_set.all %}
+                                <img class="book-image" src="{{photo.url}}">
+                            {% empty %}
+                                <div>Upload a collection photo</div>
+                        {% endfor %}
+        
+                    </div>
+                </div>
+                
             </div>
             
 
             {% if user == book.user %}
                 <div class="row">
-                   
-                    <div class="col-md-6">
-                        <div class="control-container">
-                            <div class="control-container">
-                                <form action="{% url 'add_photo' book.id %}" enctype="multipart/form-data" method="POST">
-                                    {% csrf_token %}
-                                    <input type="file" name="photo-file">
-                                    <input  type="submit"  value="Upload Photo">
-                                </form>
-                            </div>
-                       
-                            <div class="other-button ">
-                                <a class="btn btn-outline-dark btn-sm" href="{% url 'books_update' book.id %}">UPDATE</a> 
-                                <a class="btn btn-outline-dark btn-sm" href="{% url 'books_delete' book.id %}">DELETE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2"></div>
+
                     {% if book.notetype == "PostItNote" %}
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <form method="post" action="{% url 'add_postit' book.id %}" >
                                 
                                 <div class="row">
@@ -108,7 +103,7 @@
                     {% endif %}
                     
                     {% if book.notetype == "FlashCard" %}
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <form method="post" action="{% url 'add_flashcard' book.id %}" >
                                 <div class="row"> 
                                     {% csrf_token %}
@@ -130,17 +125,30 @@
                             </form>
                         </div>
                     {% endif %}
+                
+            
+            
+                    <div class="col-md-6">
+                        <div class="control-container">
+                            <div class="control-container">
+                                <form action="{% url 'add_photo' book.id %}" enctype="multipart/form-data" method="POST">
+                                    {% csrf_token %}
+                                    <input type="file" name="photo-file">
+                                    <input  type="submit"  value="Upload Photo">
+                                </form>
+                            </div>
+                        
+                            <div class="other-button ">
+                                <a class="btn btn-outline-dark btn-sm" href="{% url 'books_update' book.id %}">UPDATE</a> 
+                                <a class="btn btn-outline-dark btn-sm" href="{% url 'books_delete' book.id %}">DELETE</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             {% endif %} 
             
-            <div class= photo-container>
-                {% for photo in book.photo_set.all %}
-                        <img class="book-image" src="{{photo.url}}">
-                    {% empty %}
-                        <div>Upload a collection photo</div>
-                {% endfor %}
-
-            </div>
+                    
+            
           
 
            

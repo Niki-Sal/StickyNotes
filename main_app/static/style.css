@@ -4,6 +4,14 @@
 }
 body{
   background-color: rgba(65, 31, 165)!important;
+  background: url("assets/landpage.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+hr{
+  background-color: white !important; 
+  opacity: 1 !important;
+  height: 2px !important; 
+  border: 0 !important;
 }
 .center{
   margin-left: 20px;
@@ -66,7 +74,7 @@ main {
 /* navbar */
 
 .mycolor {
-  background-color: rgba(192, 5, 174) !important;
+  background-color: rgba(55, 40, 137) !important;
 }
 
 .link-color{
@@ -85,7 +93,7 @@ main {
 }
 /* footer */
 .page-footer{
-  background-color: rgba(192, 5, 174);
+  background-color: rgba(55, 40, 137);
   color: white;
   font-size: 20px;
   text-align: center;
@@ -95,11 +103,10 @@ main {
   margin-top: 100px;
 }
 .welcome-note{ 
-  color: white !important;
+  color: rgba(55, 40, 137) !important;
   margin-left: 20px;
 }
 .join-button{
-  /* margin-top: 50px !important; */
   display: table;
   margin: 50px auto;
 }
@@ -108,6 +115,14 @@ main {
   display: table;
   margin: 10px auto;
 }
+.btn-outline-light{
+  color:  rgba(55, 40, 137)!important;
+  text-decoration: none;
+}
+.btn-outline-light:hover {
+  text-decoration: none;
+}
+
 
 /* about */
 .note-container{
@@ -179,11 +194,11 @@ main {
 }
 /* book details */
 .book-container{
-  background-color: white;
+  background-color: rgb(187, 201, 249);
   border: 2px solid white;
   border-radius: 10px;
   margin: 20px;
-  padding: 60px;
+  padding: 30px;
 }
 
 .book-image{
@@ -193,11 +208,9 @@ main {
   border: 1px gray solid;
 }
 .book-info{
-  border: 1px rgb(212, 210, 210) solid;
   border-radius: 10px;
-  padding: 40px;
-  margin: 20px auto;
-  height: 350px;
+  margin: 10px auto;
+  text-align: center;
 }
 
 div.postit-note{
@@ -218,12 +231,10 @@ div.flashcard-note{
 }
 
 div.scrollmenu {
-  height: 350px;
+  height: 550px;
   width: 100%;
   overflow-y: scroll;
-  /* margin-bottom: 50px;
-  margin-top: 30px; */
-  border: 1px rgb(212, 210, 210) solid;
+  border: 2px white solid;
   border-radius: 10px;
   margin: 20px auto;
 }
