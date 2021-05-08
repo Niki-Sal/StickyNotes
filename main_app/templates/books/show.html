@@ -14,13 +14,18 @@
                         <hr>
                         <p><strong>Author |</strong> {{ book.author}}</p>
                         <p><strong>Date started | </strong>{{ book.date}}</p>
+                        <div class="other-button ">
+                            <a class="btn btn-outline-dark btn-sm" href="{% url 'books_update' book.id %}">UPDATE</a> 
+                            <a class="btn btn-outline-dark btn-sm" href="{% url 'books_delete' book.id %}">DELETE</a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     {% if book.notetype == "PostItNote" %}
-                        <div class="scrollmenu">
+                        <div class="scrollmenu-1">
+                            <h5 class="title-5">Notes</h5>
                         {% for postit in book.postit_set.all %} 
                             <div class= "postit-note">
                                 {{postit.index}} | {{postit.content}}
@@ -37,7 +42,8 @@
                     {% endif %}
 
                     {% if book.notetype == "FlashCard" %}
-                        <div class="scrollmenu">
+                        <div class="scrollmenu-1">
+                            <h5 class="title-5">Flashcards</h5>
                         {% for flashcard in book.flashcard_set.all %}
                             <div class="flip-card">
                                 <div class="flip-card-inner">
@@ -61,7 +67,8 @@
                 </div>
             
                 <div class="col-md-6">
-                    <div class= scrollmenu>
+                    <div class= scrollmenu-2>
+                        <h5 class="title-5">Related Photos</h5>
                         {% for photo in book.photo_set.all %}
                                 <img class="book-image" src="{{photo.url}}">
                             {% empty %}
@@ -133,15 +140,14 @@
                             <div class="control-container">
                                 <form action="{% url 'add_photo' book.id %}" enctype="multipart/form-data" method="POST">
                                     {% csrf_token %}
-                                    <input type="file" name="photo-file">
-                                    <input  type="submit"  value="Upload Photo">
+                                    <div class= "photoup">
+                                        <input type="file" name="photo-file">
+                                        <input class="btn btn-outline-dark btn-sm" type="submit"  value="Upload Photo">
+                                    </div>
                                 </form>
                             </div>
                         
-                            <div class="other-button ">
-                                <a class="btn btn-outline-dark btn-sm" href="{% url 'books_update' book.id %}">UPDATE</a> 
-                                <a class="btn btn-outline-dark btn-sm" href="{% url 'books_delete' book.id %}">DELETE</a>
-                            </div>
+                          
                         </div>
                     </div>
                 </div>

@@ -37,8 +37,18 @@ p{
 }
 .title-4 {
   color: white;
-  margin-top: 100px;
+  margin-top: 60px;
   margin-bottom: 40px;
+  text-align:  center;
+}
+.title-5 {
+  color: white;
+  margin-top: 20px;
+  text-align:  center;
+}
+.title-6 {
+  color: rgba(65, 31, 165);
+  margin-top: 20px;
   text-align:  center;
 }
 .center{
@@ -204,6 +214,7 @@ main {
 .book-image{
   height: 250px;
   width: auto;
+  max-width: 300px;
   margin: 30px;
   border: 1px gray solid;
 }
@@ -230,13 +241,26 @@ div.flashcard-note{
   margin: 10px auto;
 }
 
-div.scrollmenu {
+div.scrollmenu-1 {
   height: 550px;
   width: 100%;
   overflow-y: scroll;
   border: 2px white solid;
   border-radius: 10px;
   margin: 20px auto;
+
+}
+div.scrollmenu-2 {
+  height: 550px;
+  width: 100%;
+  overflow-y: scroll;
+  border: 2px white solid;
+  border-radius: 10px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction:column;
+  /* justify-content: flex-start; */
+  align-items: center;
 }
 .photo-container{
   border: 1px rgb(212, 210, 210) solid;
@@ -244,6 +268,10 @@ div.scrollmenu {
   height: 400px;
   width: 100%;
   overflow-x: scroll;
+}
+.photoup{
+  display: flex;
+  justify-content: space-around;
 }
 
 /****FLIP CARD*****/
@@ -292,7 +320,8 @@ div.scrollmenu {
   transform: rotateY(180deg);
 }
 .control-container{
-  border: 1px rgb(212, 210, 210) solid;
+  /* border: 1px rgb(212, 210, 210) solid; */
+  text-align: center;
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
